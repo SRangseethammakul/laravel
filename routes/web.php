@@ -43,3 +43,8 @@ Route::get('/backend/category', 'CategoryController@index')->middleware('auth')-
 Route::get('/backend/category/store', 'CategoryController@store')->middleware('auth');
 
 Route::resource('/backend/product', 'ProductController')->middleware('auth');
+
+Route::get('/cart', 'CartController@index')->middleware('auth')->name('cart.index');
+Route::get('/cart/{product_id}', 'CartController@store')->middleware('auth')->name('cart.store');
+Route::get('/cart/{product_id}/delete', 'CartController@delete')->middleware('auth')->name('cart.delete');
+Route::get('/cart/checkout/cart', 'CartController@confirm')->middleware('auth')->name('cart.confirm');
