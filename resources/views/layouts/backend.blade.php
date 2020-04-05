@@ -27,7 +27,7 @@
                 <a href=" {{ route('home')}} " class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="{{ route('welcome') }}" class="nav-link">เลือกสินค้า</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a class="nav-link" href="{{ route('logout') }}"

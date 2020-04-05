@@ -39,9 +39,16 @@
                           <li class="nav-item {{ request()->routeIs('about') ? 'bg-light' :''}}">
                           <a class="nav-link" href="{{ route('about') }}">About</a>
                           </li>
-                          <li class="nav-item {{ request()->routeIs('#') ? 'bg-light' :''}}">
-                            <a class="nav-link" href="#">Services</a>
+                          @auth
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart.index')}}">ตะกร้าสินค้า
+                                <span class="badge badge-success">
+                                    {{ App\Cart::where('user_id',auth()->user()->id)->sum('qty')}}
+                                </span>
+
+                            </a>
                           </li>
+                          @endauth
                           <li class="nav-item {{ request()->routeIs('contact.index') ? 'bg-light' :''}}">
                           <a class="nav-link" href="{{ route('contact.index')}}">Contact</a>
                           </li>
