@@ -43,4 +43,9 @@ class User extends Authenticatable
         //return $this->hasOne(Profile::class,'u_id); fk ตาราง profile
         return $this->hasOne(Profile::class); // fk default user_id
     }
+
+    // many to many ต้องสลับ product กับ user อยู่ที่ model ไหน เอา model นั้นขึ้นก่อน
+    public function products(){
+        return $this->belongsToMany(Product::class,'carts','user_id','product_id')->withPivot('qty')->withTimestamps(); // ดูว่าใครซื้อบ้าง
+    }
 }

@@ -23,7 +23,9 @@ class WelcomeController extends Controller
         // $category_All = DB::select()
         // $category_All = DB::select('name',  'email as user_email')->get();
 
-        $category = Category::with('products')->where('id','=',$id)->first();
+        $category = Category::with(['products' => function ($query){
+            $query->orderBy('created_at','desc');
+            }])->where('id','=',$id)->first();
         $category_All = Category::all();
         return view('show',[
             'category_All' => $category_All,

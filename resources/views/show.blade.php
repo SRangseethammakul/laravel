@@ -24,7 +24,7 @@
     @foreach ($category->products as $item)
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{{ asset('img/'.$item->picture)}}" alt=""></a>
+            <a href="#"><img class="card-img-top" src="{{ asset('storage/image/'.$item->picture)}}" alt=""></a>
             <div class="card-body">
                 <h4 class="card-title">
                     <a href="#">{{$item->name}}</a>
@@ -34,7 +34,7 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <a href="{{ route('cart.store',['product_id'=>$item->id]) }}" class="btn btn-info">หยิบใส่ตะกร้า</a>
             </div>
             </div>
         </div>
@@ -47,4 +47,16 @@
     <!-- /.col-lg-9 -->
 
   </div>
+@endsection
+@section('footerscript')
+    @if(session('feedback'))
+        <script src="{{ asset('js/sweetalert2.all.min.js')}}"></script>
+        <script>
+            Swal.fire(
+                '{{ session('feedback')}}', //
+                'You clicked the button!',
+                'success'
+            )
+        </script>
+    @endif
 @endsection
