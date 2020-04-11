@@ -89,17 +89,18 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-header">ข้อมูลหลัก</li>
-                        <li class="nav-item">
-                        <a href="{{ route('category.index')}}" class="nav-link">
-                            <i class="nav-icon fa fa-calendar"></i>  หมวดสินค้า</a>
-                        </li>
-                        <li class="nav-item has-treeview">
-                            <a href="{{ route('product.index')}}" class="nav-link">
-                            <i class="nav-icon fa fa-envelope-o"></i> สินค้า
-                           </a>
-                        </li>
+                        @if(auth()->user()->userrole == 'admin')
+                            <li class="nav-header">ข้อมูลหลัก</li>
+                            <li class="nav-item">
+                            <a href="{{ route('category.index')}}" class="nav-link">
+                                <i class="nav-icon fa fa-calendar"></i>  หมวดสินค้า</a>
+                            </li>
+                            <li class="nav-item has-treeview">
+                                <a href="{{ route('product.index')}}" class="nav-link">
+                                <i class="nav-icon fa fa-envelope-o"></i> สินค้า
+                            </a>
+                            </li>
+                        @endif
 
                     </ul>
                 </nav>

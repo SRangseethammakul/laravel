@@ -38,8 +38,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/backend/category', 'CategoryController@index')->middleware('auth')->name('category.index');
+// Route::get('/backend/category', 'CategoryController@index')->middleware('auth')->name('category.index');
+Route::get('/backend/category', 'CategoryController@index')->middleware('admin')->name('category.index');
 
-Route::get('/backend/category/store', 'CategoryController@store')->middleware('auth');
+Route::get('/backend/category/store', 'CategoryController@store')->middleware('admin');
 
-Route::resource('/backend/product', 'ProductController')->middleware('auth');
+Route::resource('/backend/product', 'ProductController')->middleware('admin');
