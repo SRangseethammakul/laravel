@@ -70,7 +70,6 @@
                                                         <li class="fa fa-trash text-white"></li>
                                                     </button>
                                                 </form>
-
                                             </td>
                                         </tr>
                                     @endforeach
