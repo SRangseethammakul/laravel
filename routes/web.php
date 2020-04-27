@@ -38,9 +38,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('/backend/category', 'CategoryController@index')->middleware('auth')->name('category.index');
-Route::get('/backend/category', 'CategoryController@index')->middleware('admin')->name('category.index');
+Route::group(['middleware' => ['auth']], function () {
 
-Route::get('/backend/category/store', 'CategoryController@store')->middleware('admin');
+    Route::get('/backend/category', 'CategoryController@index')->name('category.index')->middleware('role:admin');
+    // Route::get('/backend/category', 'CategoryController@index')->middleware('admin')->name('category.index');
+    Route::get('/backend/category/store', 'CategoryController@store');
 
-Route::resource('/backend/product', 'ProductController')->middleware('admin');
+    Route::resource('/backend/product', 'ProductController')->except(['index'])->middleware('role:admin');
+    Route::get('/backend/product', 'ProductController@index')->name('product.index')->middleware('permission:product.index');
+
+    Route::get('/cart','CartController@index')->name('cart.index');
+    Route::get('/cart/{product_id}','CartController@store')->name('cart.store');
+    Route::get('/cart/{product_id}/delete','CartController@delete')->name('cart.delete');
+
+});

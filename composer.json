@@ -13,7 +13,8 @@
         "intervention/image": "^2.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "5.8.0"
+        "laravelcollective/html": "5.8.0",
+        "spatie/laravel-permission": "^2.38"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

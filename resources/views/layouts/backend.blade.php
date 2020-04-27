@@ -81,7 +81,9 @@
                             {{optional(auth()->user()->profile)->address}}
                         </small>
                         <small class="text-light">
-                            {{ App\Profile::where('user_id',auth()->user()->id)->first()->user->email }}
+                            Email : {{ auth()->user()->email }} <br>
+                            บทบาท : {{ auth()->user()->getRoleNames()[0] }}
+                            {{-- {{ App\Profile::where('user_id',auth()->user()->id)->first()->user->email }} --}}
                         </small>
                     </div>
                 </div>
@@ -89,18 +91,20 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        @if(auth()->user()->userrole == 'admin')
+                        {{-- @if(auth()->user()->userrole == 'admin') --}}
                             <li class="nav-header">ข้อมูลหลัก</li>
                             <li class="nav-item">
+                            @role('admin')
                             <a href="{{ route('category.index')}}" class="nav-link">
                                 <i class="nav-icon fa fa-calendar"></i>  หมวดสินค้า</a>
                             </li>
+                            @endrole
                             <li class="nav-item has-treeview">
                                 <a href="{{ route('product.index')}}" class="nav-link">
                                 <i class="nav-icon fa fa-envelope-o"></i> สินค้า
                             </a>
                             </li>
-                        @endif
+                        {{-- @endif --}}
 
                     </ul>
                 </nav>
