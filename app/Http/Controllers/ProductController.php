@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\Http\Requests\ProductRequest;
-// use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Image;
